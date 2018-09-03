@@ -23,6 +23,7 @@ public class GumballMachine
         else
         {
             System.out.println("Invalid type, setting to type 1 as default.");
+            this.machine_type = 1;
             this.gumball_cost = 25;
         }
         
