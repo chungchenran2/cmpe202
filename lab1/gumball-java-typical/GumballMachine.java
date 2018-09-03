@@ -1,15 +1,30 @@
 
 public class GumballMachine
 {
-
+    public int machine_type;
     private int num_gumballs;
     private boolean has_quarter;
+    private int gumball_cost;
 
-    public GumballMachine( int size )
+    public GumballMachine( int type, int size )
     {
         // initialise instance variables
+        this.machine_type = type;
         this.num_gumballs = size;
         this.has_quarter = false;
+        if ((this.machine_type==1) || (this.machine_type>3))
+        {
+            this.gumball_cost = 25;
+        }
+        else if ((this.machine_type==2) || (this.machine_type==3))
+        {
+            this.gumball_cost = 50;
+        }
+    }
+    
+    public int showType()
+    {
+        return this.machine_type;
     }
 
     public void insertQuarter(int coin)
