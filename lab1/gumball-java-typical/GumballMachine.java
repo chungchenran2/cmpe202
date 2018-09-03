@@ -52,6 +52,10 @@ public class GumballMachine
             if (this.total_coin_amount == 50)
                 this.has_2_quarters = true;
         }
+        else if (this.machine_type == 3)
+        {
+            this.total_coin_amount += coin;
+        }
     }
     
     public void turnCrank()
@@ -88,6 +92,22 @@ public class GumballMachine
             }
             else
                 System.out.println("Please insert only 2 quarters.");
+        }
+        else if (this.machine_type == 3)
+        {
+            if (this.total_coin_amount == 50)
+            {
+                if (this.num_gumballs > 0)
+                {
+                    this.num_gumballs--;
+                    this.total_coin_amount = 0;
+                    System.out.println("Thanks for your coins. Gumball Ejected!");
+                }
+                else
+                    System.out.println("No More Gumballs! Sorry, can't return your coins.");
+            }
+            else
+                System.out.println("Please insert 50 cents.");
         }
     }
 }
