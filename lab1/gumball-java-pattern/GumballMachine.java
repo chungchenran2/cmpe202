@@ -1,59 +1,64 @@
 
 
 public class GumballMachine {
- 
-	State soldOutState;
-	State noQuarterState;
-	State hasQuarterState;
-	State soldState;
- 
-	State state = soldOutState;
-	int count = 0;
- 
-	public GumballMachine(int numberGumballs) {
-		soldOutState = new SoldOutState(this);
-		noQuarterState = new NoQuarterState(this);
-		hasQuarterState = new HasQuarterState(this);
-		soldState = new SoldState(this);
+    
+    int machineType;
+    State soldOutState;
+    State noQuarterState;
+    State hasQuarterState;
+    State soldState;
+    State hasTwoQuartersState;
+    
+    State state = soldOutState;
+    int count = 0;
+    
+    public GumballMachine(int numberGumballs, int type) {
+        soldOutState = new SoldOutState(this);
+        noQuarterState = new NoQuarterState(this);
+        hasQuarterState = new HasQuarterState(this);
+        soldState = new SoldState(this);
+        hasTwoQuartersState = new HasTwoQuartersState(this);
 
-		this.count = numberGumballs;
- 		if (numberGumballs > 0) {
-			state = noQuarterState;
-		} 
-	}
+        this.count = numberGumballs;
+        if (numberGumballs > 0) {
+            state = noQuarterState;
+        }
+        
+        this.machineType = type;
+    }
  
-	public void insertQuarter() {
-		state.insertQuarter();
-	}
+    public void insertQuarter() {
+        state.insertQuarter();
+    }
  
-	public void ejectQuarter() {
-		state.ejectQuarter();
-	}
+    public void ejectQuarter() {
+        state.ejectQuarter();
+    }
  
-	public void turnCrank() {
-		state.turnCrank();
-		state.dispense();
-	}
+    public void turnCrank() {
+        state.turnCrank();
+        state.dispense();
+    }
 
-	void setState(State state) {
-		this.state = state;
-	}
+    void setState(State state) {
+        this.state = state;
+    }
  
-	void releaseBall() {
-		System.out.println("A gumball comes rolling out the slot...");
-		if (count != 0) {
-			count = count - 1;
-		}
-	}
+    void releaseBall() {
+        System.out.println("A gumball comes rolling out the slot...");
+        if (count != 0) {
+            count = count - 1;
+        }
+    }
  
-	int getCount() {
-		return count;
-	}
+    int getCount() {
+        return count;
+    }
  
-	void refill(int count) {
-		this.count = count;
-		state = noQuarterState;
-	}
+    void refill(int count) {
+        this.count = count;
+        state = noQuarterState;
+    }
 
     public State getState() {
         return state;
@@ -75,16 +80,27 @@ public class GumballMachine {
         return soldState;
     }
  
-	public String toString() {
-		StringBuffer result = new StringBuffer();
-		result.append("\nMighty Gumball, Inc.");
-		result.append("\nJava-enabled Standing Gumball Model #2004");
-		result.append("\nInventory: " + count + " gumball");
-		if (count != 1) {
-			result.append("s");
-		}
-		result.append("\n");
-		result.append("Machine is " + state + "\n");
-		return result.toString();
-	}
+    public State getHasTwoQuartersState() {
+        return hasTwoQuartersState;
+    }
+    
+    public String toString() {
+        StringBuffer result = new StringBuffer();
+        result.append("\nMighty Gumball, Inc.");
+        if (this.machineType == 1)
+            result.append("\nJava-enabled Standing Gumball Model #2004");
+        else if (this.machineType == 2)
+            result.append("\nJava-enabled Standing Gumball Model #2005");
+        result.append("\nInventory: " + count + " gumball");
+        if (count != 1) {
+            result.append("s");
+        }
+        result.append("\n");
+        result.append("Machine is " + state + "\n");
+        return result.toString();
+    }
+    
+    public int getMachineType() {
+        return this.machineType;
+    }
 }
