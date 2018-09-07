@@ -1,22 +1,24 @@
 
 
 public class Main {
+    
+    public static void main(String[] args) {
+        GumballMachine gumballMachine1 = new GumballMachine(5, 1);
+        GumballMachine gumballMachine2 = new GumballMachine(5, 2);
 
-	public static void main(String[] args) {
-		GumballMachine gumballMachine = new GumballMachine(5);
+        System.out.println(gumballMachine1);
 
-		System.out.println(gumballMachine);
+        gumballMachine1.insertQuarter();
+        gumballMachine1.turnCrank();
 
-		gumballMachine.insertQuarter();
-		gumballMachine.turnCrank();
+        System.out.println(gumballMachine1);
+        System.out.println(gumballMachine2);
 
-		System.out.println(gumballMachine);
-
-		gumballMachine.insertQuarter();
-		gumballMachine.turnCrank();
-		gumballMachine.insertQuarter();
-		gumballMachine.turnCrank();
-
-		System.out.println(gumballMachine);
-	}
+        gumballMachine2.insertQuarter();
+        gumballMachine2.turnCrank();
+        gumballMachine2.insertQuarter();
+        gumballMachine2.turnCrank();
+        
+        System.out.println(gumballMachine2);
+    }
 }
