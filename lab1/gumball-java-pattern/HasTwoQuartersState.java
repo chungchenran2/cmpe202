@@ -1,18 +1,18 @@
 
-public class HasTwoQuartersState implements State
-{
+public class HasTwoQuartersState implements State {
     GumballMachine gumballMachine;
     
     public HasTwoQuartersState(GumballMachine gumballMachine) {
         this.gumballMachine = gumballMachine;
     }
     
-    public void insertQuarter() {
+    public void insertCoin(int coin) {
         System.out.println("You can't insert another quarter");
     }
  
-    public void ejectQuarter() {
+    public void ejectCoin() {
         System.out.println("Quarter returned");
+        gumballMachine.coinAmount -= 25;
         gumballMachine.setState(gumballMachine.getHasQuarterState());
     }
  
