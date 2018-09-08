@@ -9,27 +9,37 @@ public class HasQuarterState implements State {
         this.gumballMachine = gumballMachine;
     }
   
-    public void insertQuarter() {
-        if (gumballMachine.getMachineType() == 1)
+    public void insertCoin(int coin) {
+        if (gumballMachine.machineType == 1)
             System.out.println("You can't insert another quarter");
-        else if (gumballMachine.getMachineType() == 2)
+        else if ((gumballMachine.machineType == 2) && (coin == 25))
         {
             System.out.println("You inserted a second quarter");
+            gumballMachine.coinAmount += coin;
             gumballMachine.setState(gumballMachine.getHasTwoQuartersState());
+        }
+        else if (gumballMachine.machineType == 3)
+        {
+            System.out.println("You inserted a non-quarter");
+            gumballMachine.coinAmount += coin;
+            gumballMachine.setState(gumballMachine.getHasAnyCoinState());
         }
     }
  
-    public void ejectQuarter() {
+    public void ejectCoin() {
         System.out.println("Quarter returned");
-        gumballMachine.setState(gumballMachine.getNoQuarterState());
+        gumballMachine.coinAmount = 0;
+        gumballMachine.setState(gumballMachine.getNoCoinState());
     }
  
     public void turnCrank() {
         System.out.println("You turned...");
-        if (gumballMachine.getMachineType() == 1)
+        if (gumballMachine.machineType == 1)
             gumballMachine.setState(gumballMachine.getSoldState());
-        else if (gumballMachine.getMachineType() == 2)
+        else if (gumballMachine.machineType == 2)
             System.out.println("Still needs another quarter");
+        else if (gumballMachine.machineType == 3)
+            System.out.println("Still needs 25 more cents");
     }
 
     public void dispense() {
