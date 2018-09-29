@@ -49,4 +49,4 @@ WLState
 
 I decided to go with state because there are two states for this waiting list, "Table Ready" and "Table Not Ready". When the current state is "Table Not Ready" it will wait for the first table that becomes available. When the current state is "Table Ready" it will return the number of seats available for that table and wait to move on to the next available table.
 
-WaitList plays the Context role, WLState plays the State role, TableNotReadyState plays the ConcreteStateA role, and TableReadyState plays the ConcreteStateB role.
+WaitList plays the Context role, WLState plays the State role, TableNotReadyState and TableReadyState both play the ConcreteState subclasses roles.
