@@ -1,52 +1,67 @@
 CRC Cards for Din Tai Fung sign-up
 
+///////////////////////////////////////////////////////////////
+
 CLASS: WaitList
 
 RESPONSIBILITIES:
 Maintains a waiting list for customer parties.
 Accepts a Customer's Name, Cell Phone Number, and the Number of People in their Party.
 Creates an entry with the given information to the bottom of the list.
-Returns a "Table Ready" message to the Customer when a table is available.
+Returns a "Table Ready" message to the Customer when a table from tablelist is available.
 Accepts a "Confirm" or "Leave" message from the Customer.
 Removes the Customer's entry after their reply.
+Find another Customer that the table accommodates or send signal to tablelist to change table's state.
 
 COLLABORATORS:
-WLState
+TableList
 
+///////////////////////////////////////////////////////////////
 
-CLASS: WLState
+CLASS: TableList
 
 RESPONSIBILITIES:
-Checks if an available table can accommodate a customer party from the wait list.
-Starts checking the top entry and moves down to subsequent entries until a match is found.
-Returns confirmation that a table is ready for the selected customer party.
-If receives "Confirm" then move state from TableReady to TableNotReady.
-If receives "Leave" then check more entries for other matches.
+Maintains a list for all tables in the restaurant.
+Each table can accommodate a certain number of customers.
+Each table has two states, can be changed by a signal from waitlist.
+Returns an available table's info to waitlist.
 
 COLLABORATORS:
-WaitList
+TableStatus
 
+///////////////////////////////////////////////////////////////
+
+CLASS: TableStatus
+
+RESPONSIBILITIES:
+Keeps the state of a table.
+Change state from TableNotReadyState to TableReadyState and vice versa with a signal.
+
+COLLABORATORS:
+TableNotReadyState, TableReadyState
+
+///////////////////////////////////////////////////////////////
 
 CLASS: TableNotReadyState
 
 RESPONSIBILITIES:
-Listens for the first table that becomes available.
-Keeps list of all available tables.
+Signals the waitlist that a table is not ready.
 
 COLLABORATORS:
-WLState
 
+///////////////////////////////////////////////////////////////
 
 CLASS: TableReadyState
 
 RESPONSIBILITIES:
-Checks the number of seats for the first available table.
-Returns number of seats for the available table.
+Signals the waitlist that a table is ready.
 
 COLLABORATORS:
-WLState
 
+///////////////////////////////////////////////////////////////
 
-I decided to go with state because there are two states for this waiting list, "Table Ready" and "Table Not Ready". When the current state is "Table Not Ready" it will wait for the first table that becomes available. When the current state is "Table Ready" it will return the number of seats available for that table and wait to move on to the next available table.
+The patterns I decided to go with are observer and state because the waitlist can observe the tablelist for when a table becomes available. There are two states for each table, "Table Ready" and "Table Not Ready". The waitlist will do nothing when all tables are in the state "Table Not Ready". When a table changes its state to "Table Ready" the tablelist will return the table's number of seats available to the waitlist. The waitlist will notify the first customer party the table can accommodate that a table is ready and wait for their response. Whether a customer sends "Confirm" or "Leave" that customer will be removed from the waitlist. The waitlist will either find another customer match or tell the tablelist to set the table's state back to "Table Not Ready".
 
-WaitList plays the Context role, WLState plays the State role, TableNotReadyState and TableReadyState both play the ConcreteState subclasses roles.
+For the observer pattern, TableList plays the ConcreteSubject role and WaitList plays the ConcreteObserver role.
+
+For the state pattern, TableStatus plays the Context role, TableNotReadyState and TableReadyState both play the ConcreteState subclasses roles.
