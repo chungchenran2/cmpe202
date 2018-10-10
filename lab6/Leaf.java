@@ -2,19 +2,28 @@ import java.text.DecimalFormat;
 
 public class Leaf implements Component
 {
-    private String descript;
-    private Double price;
+    protected String descript;
+    protected Integer quantity;
+    protected Double price;
     
-    public Leaf(String d, Double p)
+    public Leaf(String d, Integer q, Double p)
     {
         descript = d;
+        quantity = q;
         price = p;
     }
     
-    public void printItem()
+    public Leaf(String d)
+    {
+        descript = d;
+        quantity = 0;
+        price = 0.0;
+    }
+    
+    public void printItemReceipt()
     {
         DecimalFormat fmt = new DecimalFormat("0.00");
-        System.out.println(descript + "\t" + fmt.format(price));
+        System.out.println(quantity + "    " + descript + "\t" + fmt.format(price));
     }
     
     public void addChild(Component c) {}

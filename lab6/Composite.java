@@ -2,19 +2,19 @@ import java.util.ArrayList;
 
 public class Composite implements Component
 {
-    private ArrayList<Component> itemList = new ArrayList<Component>();
-    private String itemDescription;
+    protected ArrayList<Component> itemList = new ArrayList<Component>();
+    protected String itemDescription;
     
-    public Composite(String n)
+    public Composite(String i)
     {
-        itemDescription = n;
+        itemDescription = i;
     }
 
-    public void printItem()
+    public void printItemReceipt()
     {
         System.out.println(itemDescription);
         for (Component obj : itemList) {
-            obj.printItem();
+            obj.printItemReceipt();
         }
     }
     
