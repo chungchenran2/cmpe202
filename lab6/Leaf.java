@@ -13,6 +13,13 @@ public class Leaf implements Component
         price = p;
     }
     
+    public Leaf(String d, Integer q)
+    {
+        descript = d;
+        quantity = q;
+        price = 0.0;
+    }
+    
     public Leaf(String d)
     {
         descript = d;
@@ -20,10 +27,15 @@ public class Leaf implements Component
         price = 0.0;
     }
     
+    public Double getPrice()
+    {
+        return price;
+    }
+    
     public void printItemReceipt()
     {
         DecimalFormat fmt = new DecimalFormat("0.00");
-        System.out.println(quantity + "    " + descript + "\t" + fmt.format(price));
+        System.out.println(quantity + "    " + descript + "\t\t" + fmt.format(price));
     }
     
     public void addChild(Component c) {}

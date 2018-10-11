@@ -13,9 +13,8 @@ public class Composite implements Component
     public void printItemReceipt()
     {
         System.out.println(itemDescription);
-        for (Component obj : itemList) {
+        for (Component obj : itemList)
             obj.printItemReceipt();
-        }
     }
     
     public void addChild(Component c)

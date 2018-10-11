@@ -7,7 +7,11 @@ public abstract class LeafDecorator extends Leaf implements PriceDecorator
     public LeafDecorator(String d)
     {
         super(d);
-        this.wrapped = null;
+    }
+    
+    public LeafDecorator(String d, Integer q)
+    {
+        super(d, q);
     }
     
     public void wrapDecorator(PriceDecorator w)
@@ -23,6 +27,7 @@ public abstract class LeafDecorator extends Leaf implements PriceDecorator
             return price + wrapped.getPrice();
     }
     
+    abstract public void addTopping(String t);
     abstract public String getDescriptionReceipt();
     
     @Override
