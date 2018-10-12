@@ -1,9 +1,7 @@
 import java.text.DecimalFormat;
 
-public abstract class LeafDecorator extends Leaf implements PriceDecorator
+public abstract class LeafDecorator extends Leaf
 {
-    PriceDecorator wrapped;
-    
     public LeafDecorator(String d)
     {
         super(d);
@@ -14,17 +12,9 @@ public abstract class LeafDecorator extends Leaf implements PriceDecorator
         super(d, q);
     }
     
-    public void wrapDecorator(PriceDecorator w)
-    {
-        this.wrapped = w;
-    }
-    
     public Double getPrice()
     {
-        if (wrapped == null)
-            return price;
-        else
-            return price + wrapped.getPrice();
+        return price;
     }
     
     abstract public void addTopping(String t);
