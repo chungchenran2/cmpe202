@@ -1,21 +1,28 @@
 
 public class TopBunToppings extends LeafDecorator
 {
-    private String topping;
+    private String [] toppings;
     
     public TopBunToppings(String d)
     {
         super(d);
     }
     
-    public void addTopping(String t)
+    public void addToppings(String [] t)
     {
-        this.topping = t;
+        this.toppings = t;
     }
     
     public String getDescriptionReceipt()
     {
-        String receiptDesc = "      " + this.topping;
+        String receiptDesc = "";
+        for (int i = 0; i < toppings.length; i++)
+        {
+            if (i == toppings.length-1)
+                receiptDesc += "      " + toppings[i];
+            else
+                receiptDesc += "      " + toppings[i] + "\n";
+        }
         return receiptDesc;
     }
 }

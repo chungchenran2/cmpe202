@@ -17,11 +17,17 @@ public abstract class LeafDecorator extends Leaf
         return price;
     }
     
-    abstract public void addTopping(String t);
+    abstract public void addToppings(String [] t);
     abstract public String getDescriptionReceipt();
     
     @Override
     public void printItemReceipt()
+    {
+        System.out.println(getDescriptionReceipt());
+    }
+    
+    @Override
+    public void printItemPackaging()
     {
         System.out.println(getDescriptionReceipt());
     }

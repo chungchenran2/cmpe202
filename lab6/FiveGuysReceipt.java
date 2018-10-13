@@ -4,5 +4,6 @@ public class FiveGuysReceipt
     {
     	Component sampleOrder = BuildFiveGuysOrder.getSampleOrder();
     	sampleOrder.printItemReceipt();
+    	sampleOrder.printItemPackaging();
     }
 }

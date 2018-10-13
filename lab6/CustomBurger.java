@@ -41,4 +41,11 @@ public class CustomBurger extends Composite
         for (Component obj : itemList)
             obj.printItemReceipt();
     }
+    
+    public void printItemPackaging()
+    {
+        System.out.println(quantity + "    " + itemDescription);
+        for (Component obj : packagingList)
+            obj.printItemPackaging();
+    }
 }

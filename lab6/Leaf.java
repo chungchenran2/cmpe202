@@ -38,9 +38,18 @@ public class Leaf implements Component
         System.out.println(quantity + "    " + descript + "\t\t" + fmt.format(price));
     }
     
+    public void printItemPackaging()
+    {
+        System.out.println(quantity + "    " + descript);
+    }
+    
     public void addChild(Component c) {}
     
+    public void addChildPackaging(Component c) {}
+    
     public void removeChild(Component c) {}
+    
+    public void removeChildPackaging(Component c) {}
     
     public Component getChild(int i)
     {
