@@ -3,30 +3,13 @@ import java.text.DecimalFormat;
 public class CustomBurger extends Composite
 {
     Integer quantity;
-    Double price = 0.0;
+    Double price;
     
-    public CustomBurger(String i, Integer q)
+    public CustomBurger(String i, Integer q, Double p)
     {
         super(i);
         quantity = q;
-    }
-    
-    public void setBurgerPrice()
-    {
-        if (itemDescription == "HB")
-            this.price += (6.39 * this.quantity);
-        else if (itemDescription == "CB" || itemDescription == "BB")
-            this.price += (7.19 * this.quantity);
-        else if (itemDescription == "BCB")
-            this.price += (7.79 * this.quantity);
-        else if (itemDescription == "LHB")
-            this.price += (4.59 * this.quantity);
-        else if (itemDescription == "LCB")
-            this.price += (5.29 * this.quantity);
-        else if (itemDescription == "LBB")
-            this.price += (5.59 * this.quantity);
-        else if (itemDescription == "LBCB")
-            this.price += (6.19 * this.quantity);
+        price = p;
     }
     
     public Double getPrice()

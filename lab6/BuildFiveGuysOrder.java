@@ -4,8 +4,7 @@ public class BuildFiveGuysOrder
     public static Component getSampleOrder()
     {
         Composite order = new Composite("Order");
-    	CustomBurger customBurger = new CustomBurger("LBB", 1);
-    	customBurger.setBurgerPrice();
+    	CustomBurger customBurger = new CustomBurger("LBB", 1, 5.59);
     	BottomBunToppings bbt = new BottomBunToppings("BottomBun");
     	String [] bbo = {"BACON"};
     	bbt.addToppings(bbo);
