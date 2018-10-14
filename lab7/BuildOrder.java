@@ -16,28 +16,28 @@ public class BuildOrder {
         String[] co = { "Danish Blue Cheese", "Horseradish Cheddar" } ;
         c.setOptions( co ) ;
         c.wrapDecorator( b ) ;
-        // 4 toppings free, extra +.75
+        // unlimited toppings free
         Toppings t = new Toppings( "Toppings Options" ) ;
         String[] to = { "Bermuda Red Onion", "Black Olives", "Carrot Strings", "Coleslaw" } ;
         t.setOptions( to ) ;
         t.wrapDecorator( c ) ;
-        // premium topping +1.50
-        Premium p = new Premium( "Premium Options" ) ;
-        String[] po = { "Applewood Smoked Bacon" } ;
-        p.setOptions( po ) ;
-        p.wrapDecorator( t ) ;
+        // premium topping +1.00 to 3.00
+        PremiumToppings pt = new PremiumToppings( "Premium Options" ) ;
+        String[] pto = { "Applewood Smoked Bacon" } ;
+        pt.setOptions( pto ) ;
+        pt.wrapDecorator( t ) ;
         // 1 sauce free, extra +.75
         Sauce s = new Sauce( "Sauce Options" ) ;
         String[] so = { "Appricot Sauce" } ;
         s.setOptions( so ) ;
-        s.wrapDecorator( p ) ;
+        s.wrapDecorator( pt ) ;
         
         // Setup Custom Burger Ingredients
         customBurger.setDecorator( s ) ;
         customBurger.addChild( b ) ;
         customBurger.addChild( c ) ;
         customBurger.addChild( t ) ;
-        customBurger.addChild( p ) ;
+        customBurger.addChild( pt ) ;
         customBurger.addChild( s ) ;
         
         // Add Custom Burger to the ORder
