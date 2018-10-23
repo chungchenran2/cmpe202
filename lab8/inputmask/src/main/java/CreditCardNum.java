@@ -2,7 +2,6 @@
 
 public class CreditCardNum implements IDisplayComponent, IKeyEventHandler
 {
-
     private IKeyEventHandler nextHandler ;
     private String number = "" ;
 
@@ -14,15 +13,12 @@ public class CreditCardNum implements IDisplayComponent, IKeyEventHandler
         if ( number.equals("") )
             return "[4444 4444 4444 4444]" + "  " ;
         else {
-            //return "[" + number + "]" + "  " ;
             String res = "";
-            //res = "[" + number + "]" + "  " ;
             res += "[";
-            for (int i = 0; i < number.length(); i++) {
-                res += number.charAt(i);
-                if (i==3 || i==7 || i==11)
-                    res += " ";
-            }
+            CCNAggregate ccnList = new CCNAggregateImpl(number);
+            CCNIterator ccnIter = ccnList.createIterator();
+            while (!ccnIter.iteratorFinished())
+                res += ccnIter.getNextDigit();
             res += "]  ";
             return res;
         }
