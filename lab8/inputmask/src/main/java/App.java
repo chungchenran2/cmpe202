@@ -41,10 +41,6 @@ public class App {
     public void key(String ch) {
         count++;
         screen.key(ch, count);
-        //if (count == 4 || count == 8 || count == 12)
-        //    screen.key(" ", count);
-        //else if (count == 18)
-        //    screen.key("/", count);
     }
 
 }

@@ -13,16 +13,21 @@ public class CreditCardExp implements IDisplayComponent, IKeyEventHandler
     public String display() {
         if ( date.equals("") )
             return "[MM/YY]" + "  " ;
-        else
-            return "[" + date + "]" + "  " ;
+        else {
+            String res = "";
+            res += "[";
+            ExpirationAggregate expList = new ExpirationAggregateImpl(date);
+            ExpirationIterator expIter = expList.createIterator();
+            while (!expIter.iteratorFinished())
+                res += expIter.getNextDigit();
+            res += "]  ";
+            return res;
+        }
     }   
 
     public void key(String ch, int cnt) {
-        if ( cnt >= 17 && cnt <= 20  ){
+        if ( cnt >= 17 && cnt <= 20  )
             date += ch ;
-            if (cnt == 18)
-                date += "/";
-        }
         else if ( nextHandler != null )
             nextHandler.key(ch, cnt) ;
     }   
