@@ -3,32 +3,39 @@
 public class CreditCardCVC implements IDisplayComponent, IKeyEventHandler
 {
 
-	private IKeyEventHandler nextHandler ;
-	private String cvc = "" ;
+    private IKeyEventHandler nextHandler ;
+    private String cvc = "" ;
 
     public void setNext( IKeyEventHandler next) {
-    	this.nextHandler = next ;
-    }	
+        this.nextHandler = next ;
+    }   
 
-	public String display() {
-		if ( cvc.equals("") )
-			return "[123]" + "  " ;
-		else
-			return "[" + cvc + "]" + "  " ;
-	}	
+    public String display() {
+        if ( cvc.equals("") )
+            return "[123]" + "  " ;
+        else
+            return "[" + cvc + "]" + "  " ;
+    }   
 
-	public void key(String ch, int cnt) {
-		if ( cnt >= 21 ) {
-			if ( cnt >= 21 && cnt <= 23 )
-				cvc += ch ;
-			else if ( nextHandler != null )
-				nextHandler.key(ch, cnt) ;
-		}
-		
-	}	
+    public void key(String ch, int cnt) {
+        if ( cnt >= 21 ) {
+            if ( cnt >= 21 && cnt <= 23 ) {
+                if (ch.equals("X") || ch.equals("Delete")) {
+                    StringBuilder sb = new StringBuilder(cvc);
+                    sb.deleteCharAt(sb.length() - 1);
+                    cvc = sb.toString();
+                }
+                else
+                    cvc += ch ;
+            }
+            else if ( nextHandler != null )
+                nextHandler.key(ch, cnt) ;
+        }
+        
+    }   
 
-	public void addSubComponent( IDisplayComponent c ) {
-		return ; // do nothing
-	}
+    public void addSubComponent( IDisplayComponent c ) {
+        return ; // do nothing
+    }
 
 }

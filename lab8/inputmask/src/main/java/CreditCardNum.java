@@ -25,8 +25,15 @@ public class CreditCardNum implements IDisplayComponent, IKeyEventHandler
     }   
 
     public void key(String ch, int cnt) {
-        if ( cnt <= 16 )
-            number += ch ;
+        if ( cnt <= 16 ) {
+            if ((ch.equals("X") || ch.equals("Delete")) && (cnt > 0)) {
+                StringBuilder sb = new StringBuilder(number);
+                sb.deleteCharAt(sb.length() - 1);
+                number = sb.toString();
+            }
+            else
+                number += ch ;
+        }
         else if ( nextHandler != null )
             nextHandler.key(ch, cnt) ;
     }   
