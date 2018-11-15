@@ -1,7 +1,6 @@
 # Java Lambda Design Pattern Lab
 
-### Original Java Design Pattern
+The Java design pattern I had chosen for Lab 9 is the composite pattern. The respective example for this pattern is the creation of a custom burger order. In the original version there is a class called BuildOrder that builds an order with given items. The method addChild for the Composite instance customBurger was called many times when building the custom burger. Then from the Client class the order is printed out.
 
-The chosen Java design pattern is Composite, the respective example is building a custom burger order.
+For the Lambda implementation I created two arrays, one String array with the item descriptions called cbdescript and one double array with the prices of those items called cbprices. I declared an interface called itemGenerator with an abstract method header called createItem. I assigned a lambda expression for createItem to the itemGenerator instance ig where it returns a new Leaf object with a String description and a double price. Then I declared a method called buildBurger that takes in a String array, a double array, and a itemGenerator object. This method takes a burger item and it's respective price then creates a Leaf object to be added to a Composite object, which is the object returned. The output will still be the same as the original but now there is no need to call addChild multiple times in the getOrder function.
 
-### Lambda Style Java Design Pattern
