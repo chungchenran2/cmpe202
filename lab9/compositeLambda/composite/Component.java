@@ -1,4 +1,4 @@
-package composite;
+//package composite;
 
 public interface Component {
 
