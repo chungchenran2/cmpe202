@@ -4,10 +4,15 @@ For the solution in Lab 1 I have to explicitly instantiate three GumballMachine 
 
 ### Screenshots
 
-Feature Model: 
+Feature Model:
+![alt text](https://github.com/chungchenran2/cmpe202/blob/master/lab10/screenshots/feature_model.png)
 
-Gumball Machine 1 Output: 
+Gumball Machine 1 Output:
+![alt text](https://github.com/chungchenran2/cmpe202/blob/master/lab10/screenshots/gumballMachine1_output.png)
 
-Gumball Machine 2 Output: 
+Gumball Machine 2 Output:
+![alt text](https://github.com/chungchenran2/cmpe202/blob/master/lab10/screenshots/gumballMachine2_output.png)
 
 Gumball Machine 3 Output: 
+![alt text](https://github.com/chungchenran2/cmpe202/blob/master/lab10/screenshots/gumballMachine3_output_1.png)
+![alt text](https://github.com/chungchenran2/cmpe202/blob/master/lab10/screenshots/gumballMachine3_output_2.png)
