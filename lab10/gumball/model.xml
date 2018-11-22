@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<featureModel>
+    <properties/>
+    <struct>
+        <and abstract="true" mandatory="true" name="GumballMachine">
+            <alt abstract="true" mandatory="true" name="MODEL">
+                <alt name="GumballCrankModel">
+                    <feature name="GumballOneQuarter"/>
+                    <feature name="GumballTwoQuarters"/>
+                </alt>
+                <feature name="GumballSlotModel"/>
+            </alt>
+            <alt abstract="true" mandatory="true" name="COST">
+                <feature name="GumballCost25"/>
+                <feature name="GumballCost50"/>
+            </alt>
+        </and>
+    </struct>
+    <constraints>
+        <rule>
+            <imp>
+                <var>GumballOneQuarter</var>
+                <var>GumballCost25</var>
+            </imp>
+        </rule>
+        <rule>
+            <imp>
+                <var>GumballTwoQuarters</var>
+                <var>GumballCost50</var>
+            </imp>
+        </rule>
+    </constraints>
+    <calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+    <comments/>
+    <featureOrder userDefined="false"/>
+</featureModel>
